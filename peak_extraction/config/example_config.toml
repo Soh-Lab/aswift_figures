@@ -1,0 +1,26 @@
+#### ECHEM PEAK EXTRACTION CONFIG PARAMS ####
+
+[parameters]
+# options: aswift, plaxco_gauss, poly_linear, poly_original, justine_ewd, aswift_ewd
+fitting_methods = ['aswift']
+#fitting_methods = ['aswift', 'plaxco_gauss', 'poly_linear', 'justine_ewd']
+# options: gaussian, polynomial, linear, t, derpsalsa, derpsalsa_iter, tikhonov
+background_method = 'derpsalsa_iter'
+# options: gaussian, t, t_huber, tikhonov
+peak_method = 'tikhonov'
+# frequency values you want to fit
+hz_values = [200]
+# averaged replicates range for gain calculations (starts at 0! assumed to be lower to upper, inclusive data points)
+calibration_lower_idx = 0
+calibration_upper_idx = 4
+# flag for setting huber reweighting for tikhonov smoothing filter
+huber_reweight = true
+# set to true if first file is [num]hz.csv, false if first file is [num]hz-1.csv
+use_file0 = true
+# filtering outliers >x MAD above ASWIFT smoother
+filter_outliers = false
+outliers_cutoff = 10.0
+
+[locations]
+# set to input directory with all the echem csv files
+input_dir = '/Users/Max_1/Soh Lab/echem/20250502_Fig5a_BICEP_csv'

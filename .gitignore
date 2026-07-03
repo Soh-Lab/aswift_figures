@@ -1,0 +1,11 @@
+/venv
+/simulation/simulation_data
+/.idea
+/.DS_Store
+**/.DS_Store
+**/__pycache__/
+*.py[cod]
+
+# Local/raw analysis inputs not intended for the publication figures repo.
+/data
+/ASWIFT Data

@@ -1,0 +1,76 @@
+[workflow]
+backend = "pool"
+
+[[simulations]]
+name = "main-panel"
+config = "../simulation_config/simul_config.toml"
+save = true
+
+[[simulations]]
+name = "laplacian-panel"
+config = "../simulation_config/simul_config_laplacian.toml"
+save = true
+
+[[simulations]]
+name = "huber-optimization"
+config = "../simulation_config/huber_optimization.toml"
+save = true
+
+[[simulations]]
+name = "mad-window-optimization"
+config = "../simulation_config/mad_window_optimization.toml"
+save = true
+
+[[simulations]]
+name = "peak-prominence-optimization"
+config = "../simulation_config/peak_prominence_optimization.toml"
+save = true
+
+[[simulations]]
+name = "binding-curve"
+config = "../simulation_config/binding_curve.toml"
+save = true
+
+[[statistics]]
+name = "main-panel-summary"
+source = "../simulation_data/panel_random_bl.feather"
+output = "../simulation_data/paper_data/panel_summary.feather"
+methods = ["aswift", "polynomial", "multigauss", "ewd"]
+kind = "error"
+drop_baselines = ["sigmoid"]
+
+[[statistics]]
+name = "laplacian-panel-summary"
+source = "../simulation_data/panel_random_bl_laplacian.feather"
+output = "../simulation_data/paper_data/panel_laplacian_summary.feather"
+methods = ["aswift", "polynomial", "multigauss", "ewd"]
+kind = "error"
+drop_baselines = ["sigmoid"]
+
+[[statistics]]
+name = "huber-summary"
+source = "../simulation_data/huber_panel.feather"
+output = "../simulation_data/paper_data/huber_summary.feather"
+methods = ["aswift_huber0", "aswift_huber1", "aswift_huber2", "aswift_huber3"]
+kind = "error"
+
+[[statistics]]
+name = "mad-window-summary"
+source = "../simulation_data/mad_window_panel.feather"
+output = "../simulation_data/paper_data/window_summary.feather"
+methods = ["aswift_mad11", "aswift_mad21", "aswift_mad31", "aswift_mad51"]
+kind = "error"
+
+[[statistics]]
+name = "peak-prominence-summary"
+source = "../simulation_data/peak_prominence_panel.feather"
+output = "../simulation_data/paper_data/prominence_summary.feather"
+methods = ["aswift_peak_prominence0.1", "aswift_peak_prominence0.3", "aswift_peak_prominence0.5", "aswift_peak_prominence1.0"]
+kind = "error"
+
+[[statistics]]
+name = "binding-curve-summary"
+source = "../simulation_data/sim_binding_curve_mg_ewd.feather"
+output = "../simulation_data/paper_data/binding_summary.feather"
+methods = ["aswift", "polynomial", "multigauss", "ewd"]
+kind = "peak"

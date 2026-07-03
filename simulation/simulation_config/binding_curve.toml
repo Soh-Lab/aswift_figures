@@ -1,0 +1,19 @@
+[model]
+generate_data = true
+solve_data = true
+algos = ['aswift', 'polynomial', 'multigauss', 'ewd']
+baseline = 'panel'
+peak = 'gauss'
+x = [-0.4, 0.0, 400]
+replicates = 3
+constant_noise = true
+
+[parameters]
+amplitudes = [1.0, 1.005, 1.011, 1.022, 1.045, 1.089, 1.159, 1.250, 1.341, 1.411, 1.455, 1.478, 1.489, 1.495, 0.995, 0.989, 0.978, 0.955, 0.911, 0.841, 0.750, 0.659, 0.589, 0.545, 0.522, 0.511, 0.505]
+peak_loc = [-0.2, -0.2, 1]
+peak_widths = [0.3]
+psnrs_db = [30]
+
+[locations]
+simulation_path = 'simulation/simulation_data/sim_binding_curve_mg.feather'
+save_path = 'simulation/simulation_data/sim_binding_curve_mg_ewd.feather'

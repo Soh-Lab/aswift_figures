@@ -1,0 +1,18 @@
+[model]
+generate_data = true
+solve_data = true
+algos = ['aswift', 'polynomial', 'multigauss', 'ewd']
+baseline = 'panel'
+peak = 'gauss'
+x = [-0.4, 0.0, 400]
+replicates = 1
+
+[parameters]
+amplitudes = [1]
+peak_loc = [-0.25, -0.15, 3]
+peak_widths = [0.2, 0.3, 0.5]
+psnrs_db = [15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
+
+[locations]
+simulation_path = ''
+save_path = 'simulation/simulation_data/panel_random_bl.feather'
