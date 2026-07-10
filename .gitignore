@@ -6,6 +6,6 @@
 **/__pycache__/
 *.py[cod]
 
-# Local/raw analysis inputs not intended for the publication figures repo.
-/data
-/ASWIFT Data
+# Exported figure artifacts
+*.pdf
+*.svg
