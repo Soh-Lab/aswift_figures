@@ -1,0 +1,86 @@
+{
+  "python": "3.12.6 (v3.12.6:a4a2d2b0d85, Sep  6 2024, 16:08:03) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "arm",
+  "cpu_count": 18,
+  "aswift_path": "/Users/Max_1/PycharmProjects/aswift_figures/venv/lib/python3.12/site-packages/aswift/__init__.py",
+  "settings": {
+    "baseline_boundary": 0.05,
+    "bg_buffer": 0,
+    "huber_reweight": true,
+    "huber_cutoff": 2.0,
+    "mad_window": 21,
+    "peak_lambda_scale": 1.0,
+    "peak_prominence": 0.5
+  },
+  "versions": {
+    "aswift": "1.0.3",
+    "numpy": "2.2.5",
+    "scipy": "1.15.3",
+    "pybaselines": "1.2.1",
+    "pandas": "2.2.2"
+  },
+  "inputs": {
+    "/Users/Max_1/PycharmProjects/aswift_figures/simulation/simulation_data/paper_data/panel_random_bl.feather": "ae092c76693e1453a18a65860bf671b1352333de9da9632a1501074d0c3d3c60"
+  },
+  "arguments": {
+    "mode": "derpsalsa",
+    "workers": 8,
+    "input": "/Users/Max_1/PycharmProjects/aswift_figures/simulation/simulation_data/paper_data/panel_random_bl.feather",
+    "out": "revisions/results/derpsalsa",
+    "variants": [
+      "default",
+      "p_0.001",
+      "p_0.1",
+      "k_0.5x",
+      "k_2x",
+      "diff_order_1",
+      "diff_order_3",
+      "max_iter_100",
+      "tol_0.0001",
+      "smooth_half_window_0",
+      "num_smooths_8",
+      "num_smooths_32"
+    ],
+    "snr": null,
+    "limit": null
+  },
+  "variants": {
+    "default": {},
+    "p_0.001": {
+      "p": 0.001
+    },
+    "p_0.1": {
+      "p": 0.1
+    },
+    "k_0.5x": {
+      "k_scale": 0.5
+    },
+    "k_2x": {
+      "k_scale": 2.0
+    },
+    "diff_order_1": {
+      "diff_order": 1
+    },
+    "diff_order_3": {
+      "diff_order": 3
+    },
+    "max_iter_100": {
+      "max_iter": 100
+    },
+    "tol_0.0001": {
+      "tol": 0.0001
+    },
+    "smooth_half_window_0": {
+      "smooth_half_window": 0
+    },
+    "num_smooths_8": {
+      "num_smooths": 8
+    },
+    "num_smooths_32": {
+      "num_smooths": 32
+    }
+  },
+  "n": 10800,
+  "protocol": "Saved Fig 2 panel, identical noise and peak across variants. Inverted baselines are not assumed concave: per-trace curvature is recorded."
+}

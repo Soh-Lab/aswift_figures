@@ -75,3 +75,12 @@ If you use ASWIFT in your research, please cite:
 
 Machine-readable citation metadata is available in the main ASWIFT repository's
 [`CITATION.cff`](https://github.com/Soh-Lab/aswift/blob/main/CITATION.cff).
+
+## ACS revision analyses
+
+The `acs_rev` branch adds reproducible timing, rejection/noise audits, derpsalsa
+sensitivity, inverted-background simulations, a regenerated Figure 3 dataset,
+and ATP channel-0 analysis. See [revisions/README.md](revisions/README.md) for
+commands, input provenance, and scientific interpretation. Revision notebooks
+have descriptive names in `figures/`; the historical figure notebooks remain
+available.

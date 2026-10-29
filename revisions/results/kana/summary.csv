@@ -1,0 +1,3 @@
+dataset,condition,hz,channel,n,ok,rejected_noise,rejected_no_peak,other_errors,saved_peak_missing,minimum_height_over_mean,minimum_height_over_median
+FIG_5,10MAD,200,0,206,206,0,0,0,0,5.491561380515278,6.280463184527664
+FIG_5,10MAD,200,1,206,206,0,0,0,0,8.474557118912852,9.861384913862636

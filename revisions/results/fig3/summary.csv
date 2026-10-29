@@ -1,0 +1,2 @@
+dataset,condition,n,ok,rejected_noise,rejected_no_peak,other_errors,saved_peak_missing,minimum_height_over_mean,minimum_height_over_median
+FIG_3_regenerated,seed_20261028,9720,9720,0,0,0,0,18.687018934394324,21.1498549948243

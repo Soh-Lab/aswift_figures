@@ -1,0 +1,40 @@
+{
+  "python": "3.12.6 (v3.12.6:a4a2d2b0d85, Sep  6 2024, 16:08:03) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "arm",
+  "cpu_count": 18,
+  "aswift_path": "/Users/Max_1/PycharmProjects/aswift_figures/venv/lib/python3.12/site-packages/aswift/__init__.py",
+  "settings": {
+    "baseline_boundary": 0.05,
+    "bg_buffer": 0,
+    "huber_reweight": true,
+    "huber_cutoff": 2.0,
+    "mad_window": 21,
+    "peak_lambda_scale": 1.0,
+    "peak_prominence": 0.5
+  },
+  "versions": {
+    "aswift": "1.0.3",
+    "numpy": "2.2.5",
+    "scipy": "1.15.3",
+    "pybaselines": "1.2.1",
+    "pandas": "2.2.2"
+  },
+  "thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1"
+  },
+  "manuscript_fitter_sha256": "f90078620e2f27903aa7a9fc4838f55406edff408956d476d2696731b0e43a47",
+  "inputs": {
+    "/Users/Max_1/Downloads/example_data/structured_csv_example/ATP_badNPAu_structured.csv": "a6a025cffb6a84c812e42df9dee6da1c142d0ddf4e8c4f57f60eebbe26d47d56",
+    "revisions/atp_concentrations.csv": "7409101424f16ac38b34b30d587d9e9af8addb2f0ac4fed5009904b9bd66790d"
+  },
+  "baseline_n": 5,
+  "channel": 0,
+  "concentrations_known": true,
+  "normalization": "Mean scans 5\u201314 (initial zero ATP); washout excluded from normalization",
+  "uncertainty": "SD across repeated scans on one electrode; not independent electrode replicates"
+}

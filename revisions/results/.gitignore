@@ -1,0 +1,5 @@
+# Full generated traces remain available locally; regenerate using the recorded inputs.
+*/traces.csv
+*/sim_binding_curve_mg_ewd.feather
+# Timing smoke output is validation only, not a publication benchmark.
+timing_smoke/

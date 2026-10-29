@@ -1,0 +1,2 @@
+source_row,file,hz,num,channel,time,trace_type,dataset,condition,status,error,refit_peak,peak,saved_peak_missing,mean_absolute_residual,median_absolute_residual,height_over_mean,height_over_median
+62,200hz-45.csv,200,45,0,0.5127777777777778,full,FIG_5,10MAD,ok,,0.35759166852543034,0.35759166852543034,False,0.06511657500437101,0.05693714906352465,5.491561380515278,6.280463184527664

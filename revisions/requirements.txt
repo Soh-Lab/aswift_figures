@@ -1,0 +1,3 @@
+-r ../requirements.txt
+aswift[batch]==1.0.3
+pybaselines==1.2.1

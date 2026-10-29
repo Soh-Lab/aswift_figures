@@ -1,0 +1,37 @@
+{
+  "python": "3.12.6 (v3.12.6:a4a2d2b0d85, Sep  6 2024, 16:08:03) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "arm",
+  "cpu_count": 18,
+  "aswift_path": "/Users/Max_1/PycharmProjects/aswift_figures/venv/lib/python3.12/site-packages/aswift/__init__.py",
+  "settings": {
+    "baseline_boundary": 0.05,
+    "bg_buffer": 0,
+    "huber_reweight": true,
+    "huber_cutoff": 2.0,
+    "mad_window": 21,
+    "peak_lambda_scale": 1.0,
+    "peak_prominence": 0.5
+  },
+  "versions": {
+    "aswift": "1.0.3",
+    "numpy": "2.2.5",
+    "scipy": "1.15.3",
+    "pybaselines": "1.2.1",
+    "pandas": "2.2.2"
+  },
+  "inputs": {
+    "/Users/Max_1/Downloads/example_data/structured_csv_example/ATP_badNPAu_structured.csv": "a6a025cffb6a84c812e42df9dee6da1c142d0ddf4e8c4f57f60eebbe26d47d56"
+  },
+  "arguments": {
+    "input": "/Users/Max_1/Downloads/example_data/structured_csv_example/ATP_badNPAu_structured.csv",
+    "out": "revisions/results/atp_audit",
+    "dataset": "ATP",
+    "workers": 2,
+    "mask_cutoff": null,
+    "channel": 0,
+    "limit": null
+  },
+  "n": 180,
+  "noise_definition": "Absolute residual to full-trace robust smoother. Both mean and median reported. Historical manuscript fitter; actual rejection uses mean, not median."
+}

@@ -1,0 +1,37 @@
+{
+  "python": "3.12.6 (v3.12.6:a4a2d2b0d85, Sep  6 2024, 16:08:03) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "arm",
+  "cpu_count": 18,
+  "aswift_path": "/Users/Max_1/PycharmProjects/aswift_figures/venv/lib/python3.12/site-packages/aswift/__init__.py",
+  "settings": {
+    "baseline_boundary": 0.05,
+    "bg_buffer": 0,
+    "huber_reweight": true,
+    "huber_cutoff": 2.0,
+    "mad_window": 21,
+    "peak_lambda_scale": 1.0,
+    "peak_prominence": 0.5
+  },
+  "versions": {
+    "aswift": "1.0.3",
+    "numpy": "2.2.5",
+    "scipy": "1.15.3",
+    "pybaselines": "1.2.1",
+    "pandas": "2.2.2"
+  },
+  "thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1"
+  },
+  "manuscript_fitter_sha256": "f90078620e2f27903aa7a9fc4838f55406edff408956d476d2696731b0e43a47",
+  "inputs": {
+    "/Users/Max_1/Soh Lab/echem/20260213_Dox_BC/combined_ch0.csv": "cfa3a13a1dea1dcf2a0243389db69416053ae72af969e49626b605b99c1c10c3",
+    "/Users/Max_1/Soh Lab/echem/20250502_Fig5a_BICEP_csv/20250502_Fig5a_BICEP_csv_methods_results_10mad.csv": "db42f8f44190271e263f9337fbc83da153bc8cd59b3412fe4870aef78162e746",
+    "/Users/Max_1/Soh Lab/echem/20250502_Fig5a_BICEP_csv/20250502_Fig5a_BICEP_csv_methods_results_20mad.csv": "db4c0c36a7b14ac81394f47a7ce77242340925331df7a401aec9a8aff21367bb",
+    "/Users/Max_1/Soh Lab/echem/20250502_Fig5a_BICEP_csv/20250502_Fig5a_BICEP_csv_methods_results_infmad.csv": "6718b6d676596d2451bfbeae6d395cf974e524cc23b4baeb153c93a6cbd861f5"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "python": "3.12.6 (v3.12.6:a4a2d2b0d85, Sep  6 2024, 16:08:03) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "arm",
+  "cpu_count": 18,
+  "aswift_path": "/Users/Max_1/PycharmProjects/aswift_figures/venv/lib/python3.12/site-packages/aswift/__init__.py",
+  "settings": {
+    "baseline_boundary": 0.05,
+    "bg_buffer": 0,
+    "huber_reweight": true,
+    "huber_cutoff": 2.0,
+    "mad_window": 21,
+    "peak_lambda_scale": 1.0,
+    "peak_prominence": 0.5
+  },
+  "versions": {
+    "aswift": "1.0.3",
+    "numpy": "2.2.5",
+    "scipy": "1.15.3",
+    "pybaselines": "1.2.1",
+    "pandas": "2.2.2"
+  },
+  "thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1"
+  },
+  "manuscript_fitter_sha256": "f90078620e2f27903aa7a9fc4838f55406edff408956d476d2696731b0e43a47",
+  "inputs": {},
+  "seed": 20261028,
+  "snr_db": 30.0,
+  "replicates": 100,
+  "tail_ratios": [
+    1.0,
+    2.0,
+    4.0,
+    8.0,
+    16.0
+  ],
+  "peak_height": 1.0,
+  "peak_center_V": -0.2,
+  "relative_peak_width": 0.3,
+  "x": [
+    -0.4,
+    0.0,
+    400
+  ],
+  "noise_pairing": "Identical noise vector for each replicate across all five tail ratios",
+  "baseline": "tail_ratio * ((voltage + 0.2) / 0.2)**2"
+}
