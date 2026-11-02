@@ -1,3 +1,13 @@
+> **Current baseline-shape analysis scope:** doxorubicin and kanamycin only
+> (3,000 + 412 = 3,412 traces). ATP is excluded from the curvature,
+> endpoint-line, and flank-slope tables and notebook. Earlier ATP-inclusive
+> counts below are historical. At 1% tolerance, 100% stay below the endpoint
+> line within tolerance; 167/3,412 (4.89%) dip more than 1% below it, and
+> 3,245/3,412 (95.11%) remain within ±1%. The separate ATP response figure
+> is unaffected. Curvature runs now exclude ATP by default; `--include-atp`
+> explicitly restores optional channel-0 inclusion. Flank runs follow their
+> input window-table membership.
+
 # ACS revision analyses
 
 Run commands from the repository root with Python 3.12. Install the manuscript
@@ -184,7 +194,7 @@ requiring a manuscript/code decision; this branch does not silently switch it.
 The baseline grid above also differs from the smoothing/peak-fitting grids.
 
 `selection_table.csv` reports bias, MAE, RMSE and failure counts. The four
-`SI_derpsalsa_*.png` pages follow the five-example/top and four-summary/bottom
+`SI_16.png through SI_19.png` pages follow the five-example/top and four-summary/bottom
 layout of SI 10–12. No high-variance outcomes are suppressed. Lower panels use
 all classes/locations/widths: mean bias and RMS within-family SD, then the same
 metrics versus SNR. These SDs describe the panel, not a confidence interval.
@@ -244,9 +254,8 @@ bookkeeping. Results carry source hashes and trace IDs. Long simulations write
 partial trace checkpoints every 250 inputs; only run postprocessing after the
 simulation exits successfully. Postprocessing rejects incomplete results.
 
-New notebooks: `SI_derpsalsa.ipynb`, `SI_concave.ipynb`, `SI_ATP.ipynb`,
-`SI_revision_tables.ipynb`, `FIG_2_revision.ipynb`, and `FIG_3_revision.ipynb`. Final SI numbering is left
-to manuscript assembly. The extra in vivo scatter table supports the checklist;
+New notebooks: `SI_16-19.ipynb`, `SI_4.ipynb`, `SI_10.ipynb`,
+`SI_revision_tables.ipynb`, `FIG_2_revision.ipynb`, and `FIG_3_revision.ipynb`. The extra in vivo scatter table supports the checklist;
 no expected-potential-range feature is implemented here. Hardware-specific final
 timing runs remain for the user on the named machines.
 
@@ -280,7 +289,138 @@ and SNR is 30 dB. The seed is 20261028; each of 100 noise replicates is reused
 across the five severities and all four methods. No new solver settings are
 introduced. All fits, including errors, are counted in the summary denominator.
 
-`figures/SI_polynomial_stress.ipynb` displays five example traces above two
+`figures/SI_3.ipynb` displays five example traces above two
 panels showing mean bias and sample SD versus log₂(tail height / peak height).
 The upper panels use separate current scales to show the tails in full. Output
 files are in `revisions/results/polynomial_stress/` (CSV, metadata, PNG/PDF/SVG).
+
+## Experimental baseline convexity
+
+```bash
+python -m revisions.curvature --structured-folder "$DATA"
+```
+
+Outputs: `results/curvature/traces.csv`, `summary.csv`, and `metadata.json`.
+The analysis refits the manuscript ASWIFT baseline and peak, using the native
+selected peak window. Figure 4 uses its saved 990-trace membership; Figure 5
+uses the joint 10-MAD preprocessing (412 traces); ATP uses all 180 channel-0
+traces, including buffer and washout scans, and is reported separately.
+
+For each fitted baseline within the window, compute its greatest convex
+minorant (lower convex envelope) by a monotone-slope hull. The maximum vertical
+gap above this envelope is zero for a convex or linear sequence and positive
+for a concave or mixed-curvature sequence. Normalize the gap by fitted peak
+height. The primary practical convexity threshold is 1% of peak height, chosen
+before inspecting the results; sensitivity tables include 0, 0.1%, 0.5%, 1%,
+and 2%. The zero threshold includes only a 1e-12 numerical allowance on the
+normalized gap. This is an approximate shape criterion, not a significance test
+or a pointwise second-derivative sign test. Applying the same calculation to
+the negative baseline distinguishes approximately linear (both gaps small),
+convex, concave, and mixed shapes. Failures are retained and explicitly counted;
+percentages use successfully classified traces as the denominator.
+
+These are **estimated baselines**, not independently measured backgrounds.
+ASWIFT itself selects these estimates, so the result cannot independently
+establish the true background's convexity or exclude peak-height bias. Percentages
+are trace-weighted; repeated scans are not independent electrodes. Use the
+Figures 4–5 pooled row for the main experimental manuscript claim, and report
+ATP separately unless the intended claim explicitly includes the supplement.
+
+### Endpoint-line comparison (preferred description of selected shapes)
+
+The same command now also writes `results/curvature/endpoint_summary.csv`.
+Join the **fitted baseline values** at the lowest and highest selected-window
+voltages by a straight line. Compute the maximum upward and downward departures
+of the baseline from that line, divided by fitted peak height. The endpoints
+are baseline values, not raw-current values or peak heights.
+
+At each tolerance (0, 0.1%, 0.5%, 1%, 2%), report:
+- `stays_below_with_tolerance`: no point exceeds the line by more than tolerance.
+- `dips_below`: at least one point lies below the line by more than tolerance.
+- Four exclusive categories: `below_only`, `approximately_linear`, `above_only`,
+  and `crosses_both`, according to which excursions exceed tolerance.
+
+The first two metrics overlap and must not be added. The four exclusive categories
+sum to all successfully classified traces. Endpoints themselves lie on the line;
+“above_only” therefore describes excursions, not every point being strictly above.
+This endpoint comparison is weaker than full convexity: a baseline can have
+local concavity and still stay below the endpoint line. Use it to describe the
+shapes selected by ASWIFT, not to infer the unobserved true background. The
+numerical allowance is 1e-12 of peak height, as in the envelope analysis.
+
+### Independent raw-flank slope diagnostic
+
+```bash
+python -m revisions.flank_slopes --structured-folder "$DATA"
+```
+
+Uses saved peak-window bounds from `curvature/traces.csv`, but no selected
+baseline values. Fits each raw flank with Theil–Sen (median pairwise slopes),
+strictly outside each endpoint, over 0.5 times the window width per side;
+checks 0.25 and 1.0 as sensitivity. At least five measured points per flank
+are required. Figure 5 retains the joint 10-MAD preprocessing. Counts right
+slope >= left slope with no practical tolerance, retaining unclassified cases.
+Results and provenance are in `results/flank_slopes/`.
+
+This is a diagnostic of the measured trace, not an isolated background:
+residual peak tails can reverse the slope ordering even for a known convex
+background (covered by a synthetic regression test). Moreover, ordered endpoint
+slopes are necessary but not sufficient for full convexity; they cannot rule
+out hidden interior concavity. This analysis therefore cannot close the gap
+between selected-baseline geometry and true background shape.
+
+### Full experimental files (rather than figure membership)
+
+The original 1,402-trace denominator was Figure 4 (990 plotted doxorubicin
+traces) plus Figure 5 (412 kanamycin traces). The full files contain 3,000
+doxorubicin and 412 kanamycin traces, totaling 3,412. ATP contains 540 traces
+across three channels, of which channel 0 contributes 180, for a full analysis
+of 3,592 traces consistent with the requested ATP channel restriction.
+
+```bash
+DATA='/Users/Max_1/PycharmProjects/aswift/examples/example_data/structured_csv_example'
+python -m revisions.curvature --structured-folder "$DATA" \
+  --scope full --out revisions/results/curvature_full
+python -m revisions.flank_slopes --structured-folder "$DATA" \
+  --windows revisions/results/curvature_full/traces.csv \
+  --out revisions/results/flank_slopes_full
+```
+
+These outputs remain separate from the original figure-membership tables.
+`curvature` defaults to figure membership; pass `--scope full` explicitly for
+all doxorubicin traces. Both scopes use all kanamycin traces with the same
+joint 10-MAD mask and all ATP channel-0 scans. The source paths and hashes are
+recorded independently for each run.
+
+### Experimental tail-to-peak ratios
+
+The full `revisions.curvature` command also produces `tail_ratio_summary.csv`
+and per-trace tail metrics in `traces.csv`, using dox/kana only by default.
+At the maximum of the fitted background-subtracted peak, obtain baseline value
+B_peak. The stress-comparable endpoint ratio is
+`max(0, max(B_left_endpoint, B_right_endpoint) - B_peak) / fitted_peak_height`.
+This removes arbitrary vertical current offset and recovers 1, 2, 4, 8, 16
+for the symmetric quadratic stress examples. A more conservative metric takes
+the maximum over **all points outside the selected peak window**, rather than
+only the two full-trace endpoints. Both are reported, along with the unshifted
+baseline/peak ratios for transparency (the latter depend on current offset and
+are not the stress-test parameter). The peak position uses the maximum of the
+manuscript Tikhonov fitted peak within its selected window.
+
+Tables include mean, median, 95th/99th percentiles, maximum, and count/fraction
+>=8. These compare the scale of fitted baselines, not true hidden backgrounds.
+An experimental sloped or asymmetric baseline with a given ratio is not equivalent
+to a symmetric quadratic baseline of that ratio. Ratios alone do not establish
+peak-extraction accuracy; repeated traces also weight this descriptive average.
+
+### Corrected smoothed measured-tail ratio
+
+Run `python -m revisions.smoothed_tail_ratios` after the full curvature run.
+The requested metric uses **smoothed measured current at the tails**, not the
+selected fitted baseline at those tails. Subtract the selected baseline at the
+fitted peak and divide by fitted peak height. The earlier baseline-to-baseline
+rise metric (maximum 0.560) is a different quantity: the selected baseline can
+lie well below the measured tails. The corrected output files start with
+`smoothed_tail_` in `results/curvature_full/`. Both exact endpoint maxima and
+maxima over all points outside the selected peak window are reported. Retain
+this distinction because smoothed tail maxima need not occur at an endpoint.

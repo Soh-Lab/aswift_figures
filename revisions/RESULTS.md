@@ -1,3 +1,13 @@
+> **Current baseline-shape analysis scope:** doxorubicin and kanamycin only
+> (3,000 + 412 = 3,412 traces). ATP is excluded from the curvature,
+> endpoint-line, and flank-slope tables and notebook. Earlier ATP-inclusive
+> counts below are historical. At 1% tolerance, 100% stay below the endpoint
+> line within tolerance; 167/3,412 (4.89%) dip more than 1% below it, and
+> 3,245/3,412 (95.11%) remain within ±1%. The separate ATP response figure
+> is unaffected. Curvature runs now exclude ATP by default; `--include-atp`
+> explicitly restores optional channel-0 inclusion. Flank runs follow their
+> input window-table membership.
+
 # ACS revision results
 
 Completed on branch `acs_rev`. Full per-trace outputs are saved locally under
@@ -115,3 +125,131 @@ bias was respectively −0.007713, −0.017409, −0.042969, −0.173969 and −
 sample SD was 0.013453, 0.013588, 0.012744, 0.017754 and 0.048072 µA. This test
 shows deterioration at the largest tail heights even without fit rejection.
 The new SI includes all four methods without clipping their errors.
+
+## Experimental estimated-baseline convexity
+
+All 1,582 fits classified successfully: Figure 4 n=990, Figure 5 n=412,
+and supplementary ATP channel 0 n=180. For Figures 4–5 pooled (n=1,402),
+strict convexity holds in 860 traces (61.3409%); at tolerances of 0.1%, 0.5%,
+and 1% of fitted peak height the percentages are 96.5050%, 99.9287%, and 100%.
+The maximum convex-envelope departure is 0.0366% of peak height for Figure 4,
+0.5106% for Figure 5, and 0.1228% for ATP. ATP is 0% strictly convex, 99.4444%
+at 0.1% tolerance, and 100% at 0.5% and 1%, illustrating why strict pointwise
+convexity and practical approximate convexity must be distinguished.
+
+Suggested main-text wording:
+“The estimated baselines beneath the selected peaks were consistent with a
+convex or linear shape to within 1% of fitted peak height in all 1,402
+experimental traces included in Figures 4–5 (SI, baseline-convexity analysis).”
+
+If retaining the unqualified phrase “convex or linear,” use 61.3% for these
+estimated baselines instead. Neither wording establishes the shape of the
+unobserved true background. The SI should report the complete tolerance table,
+including the strict result. See `results/curvature/summary.csv` and
+`figures/SI_baseline_convexity.ipynb`. Twelve scientific bookkeeping and shape
+tests pass, including known mixed-curvature and affine-invariance cases.
+
+
+## Endpoint-line comparison of selected baselines
+
+This descriptive test replaces the convexity percentage as the preferred
+manuscript framing. Among Figures 4–5 (1,402 traces), every fitted baseline
+stayed below the endpoint line within 1% of fitted peak height. Of these, 167
+(11.91%) dipped more than 1% below it and 1,235 (88.09%) stayed within ±1%.
+No trace exceeded +1%. Figure 4: 990/990 within ±1%; Figure 5: 167/412
+(40.53%) dipped below −1%, with 245/412 within ±1%. ATP: 5/180 (2.78%) dipped
+below −1%, with 175/180 within ±1%. All 1,582 fits succeeded.
+
+Suggested wording: “For all 1,402 experimental traces in Figures 4–5, the
+estimated baseline did not exceed the line joining its peak-window endpoints
+by more than 1% of fitted peak height; 11.9% of the baselines dipped more than
+1% below this line.” This describes selected baseline geometry, not the true
+background or mathematical convexity. It does not support saying that most
+baselines bow downward by more than 1%: most are approximately linear at that
+scale. Full sensitivity results are in `results/curvature/endpoint_summary.csv`.
+
+## Raw-flank slope diagnostic: does not support a background-shape claim
+
+All 1,582 traces have enough flank points. At the primary flank span (0.5 peak
+window widths), zero traces have right slope >= left slope. For Figures 4–5,
+the fraction is 1/1,402 (0.0713%) at 0.25 widths and 10/1,402 (0.7133%) at
+1.0 widths. ATP has zero qualifying traces at all three widths. These are raw
+signal slopes, not isolated background slopes: peak tails can produce this
+ordering even over a convex background, as demonstrated by a synthetic test.
+Do not interpret these counts as the prevalence of concave true backgrounds.
+
+Suggested Note 1 sentence: “The endpoint-line comparison characterizes the
+selected baselines only: a nearly linear fit is compatible with either a linear
+background or a concave background flattened by the selection criterion.”
+
+Suggested Discussion wording: “The fitted baselines remained below the line
+joining their peak-window endpoints to within 1% of fitted peak height; this
+observation does not exclude concave true backgrounds, which can lead to
+peak-height overestimation.” Even a selected fit dipping below the line does
+not independently establish the true background curvature. The attempted raw
+flank diagnostic should not be presented as resolving that identifiability gap.
+
+
+## Full-data rerun using aswift repository example files
+
+The files under `/Users/Max_1/PycharmProjects/aswift/examples/example_data/structured_csv_example`
+are byte-identical to the earlier Downloads copies. The earlier 1,402 count was
+figure membership, not full input membership. Full analysis: 3,000 doxorubicin,
+412 kanamycin, and 180 ATP channel-0 traces (3,592 total; 3,412 excluding ATP).
+ATP has 540 total rows, but channels 1 and 2 remain excluded per the user's
+channel-0 instruction. All fits and flank settings succeeded.
+
+At 1% tolerance, all 3,412 dox+kana baselines stay below the endpoint line
+within tolerance; 167 (4.8945%) dip more than 1% below, while 3,245 (95.1055%)
+remain within ±1%. Including ATP: 172/3,592 (4.7884%) dip below, and 3,420
+(95.2116%) remain within ±1%. Do not use the earlier 11.9% with this denominator.
+
+Raw-flank right>=left counts for dox+kana are 1/3,412 (0.0293%), 0/3,412,
+and 10/3,412 (0.2931%) for flank widths 0.25, 0.5, and 1.0 times the peak
+window width. This diagnostic still cannot establish true background curvature
+because the measured flanks can contain peak tails. Full outputs are separate:
+`results/curvature_full/` and `results/flank_slopes_full/`. The original
+figure-membership results are retained and explicitly labeled.
+
+## Tail-to-peak ratios, full dox/kana datasets
+
+All 3,412 traces succeeded. The ratio of the maximum fitted-baseline rise on
+the flanks above its value beneath the fitted peak to the fitted peak height
+has pooled mean 0.153175, median 0.109513, p95 0.442105, p99 0.479830, and
+maximum 0.560273. No trace reaches 8. Dox: mean 0.132242, maximum 0.560273
+(n=3,000). Kana: mean 0.305598, maximum 0.513052 (n=412). The maximum over
+all outside-window points equals the maximum of the two full-trace endpoint
+values for these fitted baselines. Worst trace: dox source_row 2404, 10 Hz,
+channel 4, acquisition 40.
+
+The unshifted absolute baseline/peak ratio tells a different story: pooled
+mean 1.575926, maximum 22.189950; 206/3,412 traces exceed or equal 8 (all
+kanamycin, 50% of that dataset). This includes the background current offset
+and is not the symmetric quadratic stress-test parameter. Do not claim that
+all absolute baseline/peak ratios are below 8.
+
+Suggested wording: “Across 3,412 experimental traces, the maximum rise of the
+fitted baseline outside the peak window relative to its value beneath the
+peak averaged 0.153 times the fitted peak height and did not exceed 0.561 times
+that height, below the 8-fold tail-rise condition examined in the quadratic
+stress test.” These results describe fitted backgrounds; differences in shape
+mean this scale comparison is not an independent accuracy guarantee.
+
+Tables: `curvature_full/tail_ratio_summary.csv` and
+`curvature_full/tail_ratios_per_trace.csv`. Twenty-one scientific tests pass,
+including exact recovery of stress ratios and invariance to vertical offset.
+
+## Corrected smoothed-tail metric (supersedes the 0.560 claim for measured tails)
+
+The intended tail height is the smoothed measured current, not the selected
+baseline at the tails. Across all 3,412 dox/kana traces, the maximum
+`(smoothed tail - fitted baseline at peak) / fitted peak height` is 10.898175.
+Using the highest smoothed flank outside the peak window, the pooled mean is
+0.937883, median 0.526968, p95 3.272555, p99 9.829847. There are 88 traces
+>=8 (2.5791% pooled), all doxorubicin. Exact endpoint-only values have mean
+0.670536 and the same maximum and count >=8. The earlier 0.560 maximum measured
+selected-baseline rise and does not characterize the measured tails.
+
+All 3,412 fits succeeded. The corrected results and ranked example plots have
+`smoothed_tail` in their filenames. These tails can include residual peak
+signal and smoother boundary effects; they are not known true backgrounds.

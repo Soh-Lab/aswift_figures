@@ -1,3 +1,13 @@
+> **Current baseline-shape analysis scope:** doxorubicin and kanamycin only
+> (3,000 + 412 = 3,412 traces). ATP is excluded from the curvature,
+> endpoint-line, and flank-slope tables and notebook. Earlier ATP-inclusive
+> counts below are historical. At 1% tolerance, 100% stay below the endpoint
+> line within tolerance; 167/3,412 (4.89%) dip more than 1% below it, and
+> 3,245/3,412 (95.11%) remain within ±1%. The separate ATP response figure
+> is unaffected. Curvature runs now exclude ATP by default; `--include-atp`
+> explicitly restores optional channel-0 inclusion. Flank runs follow their
+> input window-table membership.
+
 # Draft revision figure captions
 
 ## Derpsalsa sensitivity
@@ -84,3 +94,33 @@ large bias therefore reflects inaccurate recovery rather than fit rejection.
 Derpsalsa parameter plots use a dashed blue reference with larger open circles,
 drawn above the other curves to expose overlap. The same reference settings are
 used in all four parameter figures. The quadratic stress-test SD axis is logarithmic.
+
+## Experimental estimated-baseline convexity table
+
+Trace-weighted classification of fitted ASWIFT baselines in the native selected
+peak window. Convexity departure is the maximum vertical excess above the lower
+convex envelope, normalized by fitted peak height. Thresholds range from strict
+convexity (with numerical allowance) to 2%; the prespecified primary threshold
+is 1%. The strict, 0.1%, 0.5%, and 1% results for Figures 4–5 are 61.34%, 96.50%,
+99.93%, and 100%, respectively. All fits succeeded. These results describe
+estimated baselines, not independent measurements of the background.
+
+
+## Endpoint-line comparison table
+
+Maximum upward and downward departures of fitted ASWIFT baselines from the
+line joining their selected peak-window endpoints, normalized by fitted peak
+height. At 1% tolerance, all 1,402 Figure 4–5 baselines stay below the line
+within tolerance; 167 (11.91%) dip more than 1% below it and 1,235 (88.09%)
+remain within ±1%. ATP is reported separately. Tolerance sensitivity is shown
+from 0 to 2%. This describes fitted baseline shapes, not independently measured
+backgrounds; remaining below one chord does not establish full convexity.
+
+## Experimental baseline tail-rise table
+
+Per-trace maximum fitted-baseline rise outside the selected peak window,
+relative to the baseline beneath the fitted peak, divided by fitted peak
+height. All 3,412 dox/kana traces are included. The mean is 0.153 and maximum
+0.560; no ratio reaches 8. Endpoint-only and outside-window maxima agree in
+this dataset. Absolute ratios are reported separately because they include a
+vertical current offset: 206 kanamycin traces have absolute ratios >=8.

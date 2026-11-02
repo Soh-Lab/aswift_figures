@@ -43,12 +43,12 @@ def plot_panel(directory, mode):
     expected = metadata['n'] * (4 if mode=='concave' else len(metadata['variants']))
     if len(d)!=expected or d.duplicated(['source_row', 'method']).any():
         raise ValueError('Simulation output is incomplete or has duplicate trace-method pairs')
-    groups = {'SI_concave': (METHODS, LABELS)} if mode=='concave' else {
-        'SI_derpsalsa_p': (['default','p_0.001','p_0.1'], ['Reference (p = 0.01)','p = 0.001','p = 0.1']),
-        'SI_derpsalsa_k': (['default','k_0.5x','k_2x'], ['Reference','k = 0.5×','k = 2×']),
-        'SI_derpsalsa_numerics': (['default','diff_order_1','diff_order_3','max_iter_100','tol_0.0001'],
+    groups = {'SI_4': (METHODS, LABELS)} if mode=='concave' else {
+        'SI_16': (['default','p_0.001','p_0.1'], ['Reference (p = 0.01)','p = 0.001','p = 0.1']),
+        'SI_17': (['default','k_0.5x','k_2x'], ['Reference','k = 0.5×','k = 2×']),
+        'SI_18': (['default','diff_order_1','diff_order_3','max_iter_100','tol_0.0001'],
                                 ['Reference','Order = 1','Order = 3','100 iter.',r'Tol. = $10^{-4}$']),
-        'SI_derpsalsa_smoothing': (['default','smooth_half_window_0','num_smooths_8','num_smooths_32'],
+        'SI_19': (['default','smooth_half_window_0','num_smooths_8','num_smooths_32'],
                                  ['Reference','Half-window = 0','Passes = 8','Passes = 32']),
     }
     for name, (methods, labels) in groups.items():
@@ -165,7 +165,7 @@ def plot_atp(raw, result, summary, out, known=False):
             markeredgecolor='black',markeredgewidth=.45))
     _bottom_legend(fig,handles,LABELS,ncol=4,anchor=.02)
     fig.subplots_adjust(top=.96,bottom=.14,left=.08,right=.98,wspace=.40,hspace=.40)
-    save(fig,out,'SI_ATP')
+    save(fig,out,'SI_10')
 
 
 def plot_stress(directory):
@@ -206,7 +206,7 @@ def plot_stress(directory):
     handles.append(Line2D([0],[0],color='black',lw=1.,ls=(0,(4,2))))
     _bottom_legend(fig,handles,labels+['Ground Truth'])
     fig.subplots_adjust(bottom=.20)
-    save(fig,directory,'SI_polynomial_stress',tight=True)
+    save(fig,directory,'SI_3',tight=True)
 
 
 if __name__=='__main__':
