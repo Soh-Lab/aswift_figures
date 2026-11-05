@@ -1,0 +1,39 @@
+{
+  "python": "3.12.6 (v3.12.6:a4a2d2b0d85, Sep  6 2024, 16:08:03) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "arm",
+  "cpu_count": 18,
+  "aswift_path": "/Users/Max_1/PycharmProjects/aswift_figures/venv/lib/python3.12/site-packages/aswift/__init__.py",
+  "settings": {
+    "baseline_boundary": 0.05,
+    "bg_buffer": 0,
+    "huber_reweight": true,
+    "huber_cutoff": 2.0,
+    "mad_window": 21,
+    "peak_lambda_scale": 1.0,
+    "peak_prominence": 0.5
+  },
+  "versions": {
+    "aswift": "1.0.3",
+    "numpy": "2.2.5",
+    "scipy": "1.15.3",
+    "pybaselines": "1.2.1",
+    "pandas": "2.2.2"
+  },
+  "thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1"
+  },
+  "manuscript_fitter_sha256": "f90078620e2f27903aa7a9fc4838f55406edff408956d476d2696731b0e43a47",
+  "inputs": {
+    "/Users/Max_1/PycharmProjects/aswift_figures/revisions/results/experimental_checks/traces.csv": "c0352f4ec75594e9c9a1864f6d343bb190d905cecf153fe57bf1f1544bfdf83f",
+    "/Users/Max_1/Downloads/example_data/structured_csv_example/dox_invitro_shouldering_structured.csv": "e53226c1aeb346e1a871257fcae8df8252268637bab918db91f7f2ed45d009c9",
+    "/Users/Max_1/Downloads/example_data/structured_csv_example/kana_invivo_dual_structured.csv": "65f2845ff2fec8d5df59015fe9e4be10f5cffeb88a424f3b9b0b42d7912d49ac",
+    "/Users/Max_1/Downloads/example_data/structured_csv_example/ATP_badNPAu_structured.csv": "a6a025cffb6a84c812e42df9dee6da1c142d0ddf4e8c4f57f60eebbe26d47d56"
+  },
+  "protocol": "Recompute manuscript full-trace robust smoother. Saved peak windows. Primary flank width 0.5 window width per side; sensitivity 0.25 and 1.0. Five points minimum per side. Second differences stay entirely within each flank; pool all valid triples equally. Zero sign threshold. Also report separate-flank signs and unequal-voltage-spacing corrected second derivatives.",
+  "limitation": "A nonnegative mean second difference does not imply pointwise convexity. Smoothed total current includes peak tails; windows remain ASWIFT-derived. All ATP channel-0 stages included; in vivo joint 10-MAD mask retained."
+}

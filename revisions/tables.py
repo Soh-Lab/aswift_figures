@@ -57,6 +57,7 @@ def main():
             intervals.append(dict(dataset=path.stem,hz=hz,channel=ch,n=len(g),
                 minimum_positive_interval_s=positive.min() if len(positive) else np.nan,
                 median_positive_interval_s=np.median(positive) if len(positive) else np.nan,
+                mean_positive_interval_s=positive.mean() if len(positive) else np.nan,
                 zero_or_negative_intervals=int((dt<=0).sum())))
     pd.DataFrame(intervals).to_csv(a.results/'acquisition_intervals.csv',index=False)
     # Supplementary Table S2: match shared masking and full-trace membership.

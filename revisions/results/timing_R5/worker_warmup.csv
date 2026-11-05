@@ -1,0 +1,13 @@
+method,workers,repeat,worker_pid,warmup_ms
+aswift,1,0,28704,
+aswift,1,1,28704,
+aswift,1,2,28704,
+polynomial,1,0,28704,
+polynomial,1,1,28704,
+polynomial,1,2,28704,
+multigauss,1,0,28704,
+multigauss,1,1,28704,
+multigauss,1,2,28704,
+ewd,1,0,28704,
+ewd,1,1,28704,
+ewd,1,2,28704,

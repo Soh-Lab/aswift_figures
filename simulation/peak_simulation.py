@@ -325,10 +325,7 @@ def gaussian_noise(x):
     sigma_all = sigma_arr[:, None, None, None] * noise_amps_arr[None, :, None, None]
     noise_all = np.random.normal(scale=sigma_all, size=(len(psnrs), len(amps_arr), R, N))
 
-    # Optional sparse Laplacian outliers. These are additive outliers, not a
-    # replacement for the Gaussian background noise. By default, exactly 2% of
-    # each trace is hit with Laplacian noise whose scale is proportional to the
-    # same SNR-defined sigma used above.
+    # Add sparse Laplacian outliers to the Gaussian noise using a scale in current units.
     inject_laplacian = bool(getattr(model, "inject_laplacian", False))
 
     outlier_fraction_min = float(_get_config_value(
@@ -354,7 +351,7 @@ def gaussian_noise(x):
         mask_2d = outlier_mask.reshape(-1, N)
 
         for row in range(mask_2d.shape[0]):
-            # Randomly choose 2% to 10% of points in this trace as Laplacian outliers
+            # Draw the affected fraction separately for each trace.
             outlier_fraction = np.random.uniform(outlier_fraction_min, outlier_fraction_max)
             n_outliers = int(round(outlier_fraction * N))
 

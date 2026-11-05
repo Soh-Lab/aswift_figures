@@ -1,0 +1,67 @@
+\clearpage
+\begin{table}[H]
+  \centering
+  \captionsetup{labelformat=revfig, labelsep=revspace}
+  \caption[Processing time per voltammogram]{Processing time per voltammogram for the full \textsl{in vitro} doxorubicin dataset (3,000 voltammograms, three runs per configuration), including parameter selection. Median, percentile, and maximum times summarize 9,000 individual fits. Effective time is the median across runs of batch wall time divided by 3,000, including startup and worker overhead. All times are in ms.}
+  \label{tab:s2}
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \renewcommand{\arraystretch}{1.2}
+  \begin{tabular}{l l r r r r r}
+    \hline
+    Method & Hardware & Median & 95th pct. & 99th pct. & Max & Effective \\
+    \hline
+    ASWIFT & M5 Pro, 1 thread & 41.85 & 43.49 & 44.57 & 61.70 & 41.82 \\
+     & M5 Pro, 18 workers & 64.37 & 73.47 & 88.40 & 177.77 & 4.34 \\
+     & Ryzen 5 2400G, 1 thread & 270.52 & 308.45 & 335.21 & 508.73 & 276.06 \\
+    Polynomial & M5 Pro, 1 thread & 0.173 & 0.207 & 0.226 & 0.428 & 0.176 \\
+     & M5 Pro, 18 workers & 0.354 & 0.785 & 1.63 & 47.70 & 0.832 \\
+     & Ryzen 5 2400G, 1 thread & 0.861 & 1.11 & 1.34 & 2.61 & 0.912 \\
+    Multi-Gaussian & M5 Pro, 1 thread & 168.16 & 213.57 & 237.49 & 278.11 & 172.73 \\
+     & M5 Pro, 18 workers & 275.82 & 355.11 & 392.67 & 471.09 & 16.66 \\
+     & Ryzen 5 2400G, 1 thread & 518.02 & 613.83 & 659.70 & 758.77 & 527.73 \\
+    EWD & M5 Pro, 1 thread & 48.32 & 50.19 & 51.52 & 69.99 & 47.53 \\
+     & M5 Pro, 18 workers & 88.56 & 100.03 & 127.77 & 224.30 & 5.70 \\
+     & Ryzen 5 2400G, 1 thread & 330.01 & 364.36 & 425.89 & 691.75 & 326.66 \\
+    \hline
+    \multicolumn{7}{p{0.9\linewidth}}{Mean elapsed time between successive recorded acquisitions at the same channel and frequency, including pauses: \textsl{in vitro} doxorubicin, 406.4~s; \textsl{in vitro} ATP, 21.2~s; \textsl{in vivo} kanamycin, 54.4~s in both blood and ISF. Corresponding within-series medians were 233--251~s, 14~s, and 40~s, respectively.} \\
+  \end{tabular}
+\end{table}
+
+\clearpage
+\begin{table}[H]
+  \centering
+  \captionsetup{labelformat=revfig, labelsep=revspace}
+  \caption[Processing of the \textsl{in vivo} kanamycin dataset]{Processing of the \textsl{in vivo} kanamycin dataset (\textbf{Fig.~5} and \textbf{SI, Fig.~12}). \textbf{(A)} Processing steps. \textbf{(B)} Mean percentage of voltage points masked per acquisition (identical for both matrices because they share a mask) and dimensionless point-to-point scatter, calculated as the sample standard deviation of successive differences in normalized peak height divided by $\sqrt{2}$ (206 samples and 205 differences per matrix).}
+  \label{tab:s4}
+  \small
+  \renewcommand{\arraystretch}{1.2}
+  \textbf{(A)}\par\smallskip
+  \begin{tabular}{L{0.23\linewidth} L{0.69\linewidth}}
+    \hline
+    Step & Description \\
+    \hline
+    Artifact masking & For each channel, subtract a centered 21-point rolling median from the current. Flag points whose absolute residual exceeds 10 times the channel's scaled residual MAD ($1.4826\times\mathrm{MAD}$), excluding the first and last five points from flagging. Remove a voltage point from both channels if either flags it. \textbf{SI, Fig.~12} also shows no masking and a 20~MAD cutoff. \\
+    Fitting & Fit each retained trace with ASWIFT, polynomial, multi-Gaussian, and EWD using the same masked input for all four methods. \\
+    Normalization & For \textbf{Fig.~5} and \textbf{SI, Fig.~12}, divide each method's peak heights by its mean over the first 20 retained samples in that matrix. For the scatter calculation in (B), use the first five samples as the reference. \\
+    Block averaging & For the figures, exclude 23 partial acquisitions and calculate the mean and sample standard deviation in consecutive, non-overlapping blocks of ten retained samples. Calculate scatter in (B) before block averaging. \\
+    Rejection & ASWIFT applied its rejection criteria (\textbf{SI, Table~3}); no voltammograms were rejected. All four methods returned peak heights for all 206 samples per matrix in (B). \\
+    \hline
+  \end{tabular}
+
+  \bigskip
+  \textbf{(B)}\par\smallskip
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{l l r r r r r}
+    \hline
+    Matrix & Masking & Masked (\%) & ASWIFT & Polynomial & Multi-Gaussian & EWD \\
+    \hline
+    Blood & None & 0 & 0.0223 & 0.5076 & 1.0812 & 0.3532 \\
+     & 20 MAD & 0.597 & 0.0199 & 0.0576 & 0.2067 & 0.0986 \\
+     & 10 MAD & 0.687 & 0.0196 & 0.0472 & 0.1954 & 0.0550 \\
+    ISF & None & 0 & 0.0134 & 0.1021 & 1.2500 & 0.1435 \\
+     & 20 MAD & 0.597 & 0.0137 & 0.0087 & 0.0482 & 0.0292 \\
+     & 10 MAD & 0.687 & 0.0137 & 0.0087 & 0.0482 & 0.0293 \\
+    \hline
+  \end{tabular}
+\end{table}

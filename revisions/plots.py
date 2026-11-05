@@ -165,7 +165,7 @@ def plot_atp(raw, result, summary, out, known=False):
             markeredgecolor='black',markeredgewidth=.45))
     _bottom_legend(fig,handles,LABELS,ncol=4,anchor=.02)
     fig.subplots_adjust(top=.96,bottom=.14,left=.08,right=.98,wspace=.40,hspace=.40)
-    save(fig,out,'SI_10')
+    save(fig,out,'SI_11')
 
 
 def plot_stress(directory):

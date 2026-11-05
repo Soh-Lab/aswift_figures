@@ -64,6 +64,10 @@ def measure(x,y):
     selected=np.flatnonzero(window)
     peak_index=selected[np.argmax(np.asarray(fitted_peak)[window])]
     tails=metrics(x,background,window,peak_index,height)
+    smooth = np.asarray(legacy._y_smooth)
+    ends = np.argsort(x)[[0, -1]]
+    tails["smoothed_endpoint_ratio"] = (smooth[ends].max() - background[peak_index]) / height
+    tails["smoothed_flank_ratio"] = (smooth[~window].max() - background[peak_index]) / height
     above,below=endpoint_gaps(xx,bb)
     return dict(**tails,endpoint_above=above,endpoint_below=below,endpoint_above_over_peak=above/height,endpoint_below_over_peak=below/height,peak_height=height,window_min_V=xx.min(),window_max_V=xx.max(),window_points=len(xx),
         convex_gap=convex_gap(xx,bb),concave_gap=convex_gap(xx,-bb),

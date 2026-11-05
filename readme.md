@@ -17,13 +17,9 @@ Install requirements:
 pip install -r requirements.txt
 ```
 
-## Figure Notebooks
+## Publication figures and tables
 
-Primary figure notebooks live in `figures/figure1.ipynb` through
-`figures/figure5.ipynb`. Supporting information notebooks live in
-`figures/SI_1.ipynb` onward.
-
-Rendered outputs are collected in `figures/figure_exports/`.
+The [publication inventory](revisions/README.md) identifies the source and output for each figure and the available SI tables. Main figure notebooks are `figures/FIG_1.ipynb` through `figures/FIG_5.ipynb`. Rendered figures are in `figures/figure_exports/`.
 
 ## Peak Extraction
 
@@ -75,12 +71,3 @@ If you use ASWIFT in your research, please cite:
 
 Machine-readable citation metadata is available in the main ASWIFT repository's
 [`CITATION.cff`](https://github.com/Soh-Lab/aswift/blob/main/CITATION.cff).
-
-## ACS revision analyses
-
-The `acs_rev` branch adds reproducible timing, rejection/noise audits, derpsalsa
-sensitivity, inverted-background simulations, a regenerated Figure 3 dataset,
-and ATP channel-0 analysis. See [revisions/README.md](revisions/README.md) for
-commands, input provenance, and scientific interpretation. Revision notebooks
-have descriptive names in `figures/`; the historical figure notebooks remain
-available.
