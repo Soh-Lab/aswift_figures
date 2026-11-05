@@ -1,0 +1,5 @@
+baseline,size,mean
+exponential,2700,1.0
+linear,2700,1.0
+multigauss,2700,0.7925925925925926
+polynomial,2700,1.0

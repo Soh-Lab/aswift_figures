@@ -1,0 +1,2 @@
+dataset,condition,n,ok,rejected_noise,rejected_no_peak,other_errors,saved_peak_missing,minimum_height_over_mean,minimum_height_over_median
+FIG_2,saved_simulation,10800,10800,0,0,0,0,5.750582237383579,7.351745606099728

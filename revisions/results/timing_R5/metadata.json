@@ -1,0 +1,40 @@
+{
+  "python": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "processor": "AMD64 Family 23 Model 17 Stepping 0, AuthenticAMD",
+  "cpu_count": 8,
+  "aswift_path": "C:\\Users\\Users_2\\PycharmProjects\\aswift_figures\\.venv\\Lib\\site-packages\\aswift\\__init__.py",
+  "settings": {
+    "baseline_boundary": 0.05,
+    "bg_buffer": 0,
+    "huber_reweight": true,
+    "huber_cutoff": 2.0,
+    "mad_window": 21,
+    "peak_lambda_scale": 1.0,
+    "peak_prominence": 0.5
+  },
+  "versions": {
+    "aswift": "1.0.3",
+    "numpy": "2.2.5",
+    "scipy": "1.15.3",
+    "pybaselines": "1.2.1",
+    "pandas": "2.3.3"
+  },
+  "thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1"
+  },
+  "manuscript_fitter_sha256": "713a4039f0921f6635612333ade295255a73b3b0ebd4ea3b3a3e0f5f3d14b6e9",
+  "inputs": {
+    "C:\\Users\\Users_2\\Downloads\\example_data\\example_data\\structured_csv_example\\dox_invitro_shouldering_structured.csv": "e53226c1aeb346e1a871257fcae8df8252268637bab918db91f7f2ed45d009c9"
+  },
+  "hardware_label": "Ryzen 5 2400G",
+  "total_input_traces": 3000,
+  "measured_traces": 3000,
+  "smoke_test": false,
+  "repeats": 3,
+  "protocol": "CSV parsing and imports excluded. Full fit including selection timed. Batch wall time includes startup, warmup, IPC and collection. Warmup latencies recorded separately; no worker-latency division by workers."
+}

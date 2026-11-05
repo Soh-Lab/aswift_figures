@@ -17,13 +17,9 @@ Install requirements:
 pip install -r requirements.txt
 ```
 
-## Figure Notebooks
+## Publication figures and tables
 
-Primary figure notebooks live in `figures/figure1.ipynb` through
-`figures/figure5.ipynb`. Supporting information notebooks live in
-`figures/SI_1.ipynb` onward.
-
-Rendered outputs are collected in `figures/figure_exports/`.
+The [publication inventory](revisions/README.md) identifies the source and output for each figure and the available SI tables. Main figure notebooks are `figures/FIG_1.ipynb` through `figures/FIG_5.ipynb`. Rendered figures are in `figures/figure_exports/`.
 
 ## Peak Extraction
 

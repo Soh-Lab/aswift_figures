@@ -1,0 +1,4 @@
+dataset,condition,hz,channel,n,ok,rejected_noise,rejected_no_peak,other_errors,saved_peak_missing,minimum_height_over_mean,minimum_height_over_median
+ATP,raw,150,0,60,60,0,0,0,0,6.2593382269826945,12.76138611048462
+ATP,raw,200,0,60,60,0,0,0,0,34.504478017324246,46.49841288893357
+ATP,raw,250,0,60,60,0,0,0,0,29.231441388744887,41.43016871869668

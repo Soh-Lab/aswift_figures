@@ -8,3 +8,6 @@
 # Exported figure artifacts
 *.pdf
 *.svg
+
+# Local copies of superseded publication material preserved in Git history
+/revisions/archive/

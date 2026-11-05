@@ -1,0 +1,40 @@
+{
+  "python": "3.12.6 (v3.12.6:a4a2d2b0d85, Sep  6 2024, 16:08:03) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "arm",
+  "cpu_count": 18,
+  "aswift_path": "/Users/Max_1/PycharmProjects/aswift_figures/venv/lib/python3.12/site-packages/aswift/__init__.py",
+  "settings": {
+    "baseline_boundary": 0.05,
+    "bg_buffer": 0,
+    "huber_reweight": true,
+    "huber_cutoff": 2.0,
+    "mad_window": 21,
+    "peak_lambda_scale": 1.0,
+    "peak_prominence": 0.5
+  },
+  "versions": {
+    "aswift": "1.0.3",
+    "numpy": "2.2.5",
+    "scipy": "1.15.3",
+    "pybaselines": "1.2.1",
+    "pandas": "2.2.2"
+  },
+  "thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1"
+  },
+  "manuscript_fitter_sha256": "f90078620e2f27903aa7a9fc4838f55406edff408956d476d2696731b0e43a47",
+  "inputs": {
+    "/Users/Max_1/PycharmProjects/aswift_figures/revisions/results/curvature/traces.csv": "42999b8a3d2494275c65e224d31fd2894be8cb357cae636abfc81e48a49d5289",
+    "/Users/Max_1/Downloads/example_data/structured_csv_example/dox_invitro_shouldering_structured.csv": "e53226c1aeb346e1a871257fcae8df8252268637bab918db91f7f2ed45d009c9",
+    "/Users/Max_1/Downloads/example_data/structured_csv_example/kana_invivo_dual_structured.csv": "65f2845ff2fec8d5df59015fe9e4be10f5cffeb88a424f3b9b0b42d7912d49ac"
+  },
+  "protocol": "Theil-Sen local slopes of raw currents strictly outside previously selected peak window; Figure 5 retains joint 10-MAD mask. Primary flank span = 0.5 window width on each side, sensitivity 0.25 and 1.0. Minimum five observed points per side; no smoothing or fitted-baseline values. Compare right slope >= left slope with zero tolerance.",
+  "limitation": "Window locations remain ASWIFT-derived. Raw flanks may include peak tails and noise. Endpoint slope ordering is a necessary, not sufficient, condition for a globally convex background and cannot exclude hidden interior concavity. Descriptive repeated-trace percentages, not independent electrode replication.",
+  "include_atp": false,
+  "scope_update": "ATP removed at user request; existing dox/kana calculations retained without refitting."
+}

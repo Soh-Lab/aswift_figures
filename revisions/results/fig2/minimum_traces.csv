@@ -1,0 +1,2 @@
+baseline,class,psnr_db,width,amp,location,replicate,bl_true,dataset,source_row,condition,status,error,refit_peak,peak,saved_peak_missing,mean_absolute_residual,median_absolute_residual,height_over_mean,height_over_median
+multigauss,23,15.0,0.5,1.0,-0.15,0,0.09770336053779499,FIG_2,7478,saved_simulation,ok,,0.8581930757134322,0.8438593213732275,False,0.14674328381697394,0.11478353123006313,5.750582237383579,7.351745606099728
